@@ -65,13 +65,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        branch: [ openwrt-23.05, SNAPSHOT ]
+        branch: [ openwrt-24.10.0-rc4, SNAPSHOT ]
         arch:
           - aarch64_cortex-a53
           - mips_24kc
         include:
           - branch: SNAPSHOT
-            arch: aarch64_cortex-a76
+            arch: aarch64_cortex-a53
             #arch: riscv64_riscv64
         exclude:
           - branch: SNAPSHOT
@@ -89,7 +89,7 @@ jobs:
           path: zapret-openwrt
 
       - name: Setup OpenWrt SDK
-        if: ${{ matrix.branch == 'openwrt-23.05' || matrix.branch == 'SNAPSHOT' }}
+        if: ${{ matrix.branch == 'openwrt-24.10.0-rc4' || matrix.branch == 'SNAPSHOT' }}
         working-directory: /builder
         shell: bash
         run: |
@@ -184,7 +184,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        branch: [ 'SNAPSHOT', '23.05' ]
+        branch: [ 'SNAPSHOT', '24.10.0-rc4' ]
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v4
