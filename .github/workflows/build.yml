@@ -65,7 +65,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        branch: [ openwrt-24.10.0-rc4, SNAPSHOT ]
+        branch: [ openwrt-24.10, SNAPSHOT ]
         arch:
           - aarch64_cortex-a53
           - mips_24kc
@@ -89,7 +89,7 @@ jobs:
           path: zapret-openwrt
 
       - name: Setup OpenWrt SDK
-        if: ${{ matrix.branch == 'openwrt-24.10.0-rc4' || matrix.branch == 'SNAPSHOT' }}
+        if: ${{ matrix.branch == 'openwrt-24.10' || matrix.branch == 'SNAPSHOT' }}
         working-directory: /builder
         shell: bash
         run: |
